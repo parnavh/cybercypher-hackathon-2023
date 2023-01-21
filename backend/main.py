@@ -13,7 +13,7 @@ chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
 def main(query: str):
     driver = webdriver.Chrome(options=chrome_options)
-    driver.get(f"https://www.google.com/search?q={quote(query)}%2fstocks&tbm=nws")
+    driver.get(f"https://www.google.com/search?q={quote(query)}+stocks&tbm=nws")
 
     content = driver.find_elements(
         By.XPATH, '//*[@id="search"]/div/div/div/div/div/div/div/a'
