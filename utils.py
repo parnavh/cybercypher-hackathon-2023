@@ -40,6 +40,13 @@ def colorize(label: str, score: float):
     else:
         return label_with_prefix
 
+def is_available(info, key) -> bool:
+    if key in info and info[key] != None:
+        return True
+
+    return False
+
+
 temp = [
     {
         "author": "CNBC",
