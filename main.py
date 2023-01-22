@@ -5,6 +5,9 @@ import plotly.figure_factory as ff
 import plotly.graph_objects as go
 from utils import get_start_date, get_effect_on_trend, get_search_term, sanitize_text, colorize
 from scrape import main as scraper
+import subprocess
+data = subprocess.Popen(['google-chrome', '--version'], stdout = subprocess.PIPE)
+output = data.communicate()
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from transformers import pipeline
