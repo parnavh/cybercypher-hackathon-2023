@@ -46,7 +46,7 @@ st.plotly_chart(fig, use_container_width=True, theme="streamlit")
 st.subheader("News Sentiment Analysis")
 
 news_sentiment = """
-| News Article | Publisher | Publish Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Sentiment | Effect on Trend |
+| News Article | Publisher | Publish Time | Sentiment | Effect on Trend |
 | ------------ | --------- | ------------ | --------- | --------------- |
 """
 
@@ -76,14 +76,14 @@ for x in search_res:
     news_sentiment += f'| [{sanitize_text(x["title"])}]({x["url"]}) | *{x["author"]}* | {x["time"]} | **{colorize(res["label"], res["score"])}** | {get_effect_on_trend(res["label"])} |\n'
 
 if neutral_count/len(classifications) > 0.5:
-    st.error("Stock trend is likely to remain stable")
+    st.warning("Recent news articles indicate that the stock trend is likely to remain stable.")
 else:
     if stock_score > 0.5:
-        st.success("Stock is likely to go up")
+        st.success("Recent news articles indicate that the stock is likely to go up.")
     elif stock_score < -0.5:
-        st.error("Stock is likely to go down")
+        st.error("Recent news articles indicate that the stock is likely to go down.")
     else:
-        st.warning("Stock trend is likely to remain stable")
+        st.warning("Recent news articles indicate that the stock trend is likely to remain stable.")
 
 st.markdown(news_sentiment)
 
