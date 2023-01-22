@@ -4,7 +4,7 @@ import yfinance as yf
 import plotly.figure_factory as ff
 import plotly.graph_objects as go
 from utils import get_start_date, get_effect_on_trend, get_search_term, sanitize_text, colorize
-import backend.main as scraper
+from scrape import main as scraper
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from transformers import pipeline
@@ -52,7 +52,7 @@ news_sentiment = """
 
 @st.cache(ttl=3600, show_spinner=False)
 def get_news():
-    return scraper.main(get_search_term(st.session_state.stock))
+    return scraper(get_search_term(st.session_state.stock))
 
 with st.spinner(text="Analyzing news articles..."):
     search_res = get_news()
